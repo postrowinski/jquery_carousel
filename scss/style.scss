@@ -1,0 +1,78 @@
+/* VARIABLES */
+
+/* MIXIN */
+
+@mixin transform($trans) {
+    -webkit-transform: $trans;
+    -ms-transform: $trans;
+    transform: $trans;
+}
+
+@mixin middle-align {
+    position: absolute;
+    top: 50%;
+    @include transform(translateY(-50%));
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    transition: $transition;
+}
+
+
+/* MEDIA QUERY*/
+
+$desktop: "(max-width: 1200px)";
+$laptop: "(max-width: 991px)";
+$phone: "(max-width: 768px)";
+$vertical-phone: "(max-width: 475px)";
+
+/* GENERAL */
+/* CAROUSEL */
+#carousel {
+    margin: 200px auto 0;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+        float: left;
+        width: 400px;
+        height: 400px;
+    }
+    .left-arrow {
+        position: absolute;
+        height: 100%;
+        width: 40px;
+        background: rgba(0,0,0,0.4);
+        cursor: pointer;
+    }
+    .right-arrow {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 40px;
+        cursor: pointer;
+        background: rgba(0,0,0,0.4);
+        .fa {
+            right: 0;
+        }
+    }
+    .fa {
+        position: absolute;
+        top: 50%;
+        color: #fff;
+        font-size: 40px;
+    }
+}
+
+#info {
+    max-width: 400px;
+    margin: 30px auto 0;
+}

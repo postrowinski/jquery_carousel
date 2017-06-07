@@ -1,0 +1,46 @@
+/* VARIABLES */
+/* MIXIN */
+/* MEDIA QUERY*/
+/* GENERAL */
+/* CAROUSEL */
+#carousel {
+  margin: 200px auto 0;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  position: relative; }
+  #carousel ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+  #carousel li {
+    display: inline-block;
+    float: left;
+    width: 400px;
+    height: 400px; }
+  #carousel .left-arrow {
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer; }
+  #carousel .right-arrow {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 40px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.4); }
+    #carousel .right-arrow .fa {
+      right: 0; }
+  #carousel .fa {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-size: 40px; }
+
+#info {
+  max-width: 400px;
+  margin: 30px auto 0; }
+
+/*# sourceMappingURL=style.css.map */
