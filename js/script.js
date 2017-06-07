@@ -43,10 +43,10 @@ $(document).ready(function() {
     });
     
     carouselElement.hover(
-        function (){
+        function () {
             clearInterval(startInterval);
         }, 
         function() {
-            startInterval;
+            startInterval = setInterval(slider, 3000);
         });
 });
