@@ -31,9 +31,7 @@ $(document).ready(function() {
     carouselList.css({
         'width': sliderWidth
     });
-            
-    $('#info').append(imageNumber);
-     
+             
     $('.left-arrow').click(function () {
         
     });
@@ -42,9 +40,9 @@ $(document).ready(function() {
         slider();
     });
     
-    carouselElement.hover(
+    $('#carousel').hover(
         function () {
-            clearInterval(startInterval);
+           return clearInterval(startInterval);
         }, 
         function() {
             startInterval = setInterval(slider, 3000);
