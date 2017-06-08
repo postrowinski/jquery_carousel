@@ -33,18 +33,32 @@ $vertical-phone: "(max-width: 475px)";
     margin: 200px auto 0;
     width: 400px;
     height: 400px;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
     ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
+        margin-left: -400px;
     }
     li {
         display: inline-block;
         float: left;
         width: 400px;
         height: 400px;
+    }
+    .fa {
+        position: absolute;
+        top: 50%;
+        color: rgba(255,255,255, 0.85);
+        font-size: 40px;
+        margin-left: 10px;
+        display: block;
+        width: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.3);
     }
     .left-arrow {
         float: left;
@@ -54,16 +68,8 @@ $vertical-phone: "(max-width: 475px)";
         float: right;
         cursor: pointer;
         .fa {
-            right: 0;
+            right: 10px;
         }
-    }
-    .fa {
-        position: absolute;
-        top: 50%;
-        color: #fff;
-        font-size: 40px;
-        background: (0,0,0,0.5);
-        border-radius: 50%;
     }
 }
 
