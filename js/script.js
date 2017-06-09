@@ -2,8 +2,8 @@ $(document).ready(function () {
     'use strict';
     
     // Variables   
-    var carouselList = $('#carousel ul'),
-        carouselElement = $('#carousel li'),
+    var carouselList = $('#carousel').find('ul'),
+        carouselElement = $('#carousel').find('li'),
         imageLength = carouselElement.length,
         sliderWidth = (400 * imageLength) + 'px',
         startInterval = setInterval(sliderNext, 3000);
@@ -15,47 +15,56 @@ $(document).ready(function () {
         });  
     }
     
+    function addSlideNumber() {  
+        carouselElement.each(function(index, element) {
+            $(element).attr('data-nr', index + 1);
+        }); 
+    }
+    
+    function findSlideNumber(dataNr) {      
+        $('#info').find('p').remove();
+        $('#info').append('<p>' + dataNr + ' / ' + imageLength + '</p>');      
+    }
+    
     function changeSlideNext() {
-        var firstSlide = carouselList.find('li:first-of-type'),
-            lastSlide = carouselList.find('li:last-of-type');
+        var firstSlide = carouselList.find('li').first(),
+            lastSlide = carouselList.find('li').last();
         
         lastSlide.after(firstSlide);
-        changeMargin();
+        changeMargin();        
     }  
     
     function changeSlidePrev() {
-        var firstSlide = carouselList.find('li:first-of-type'),
-            lastSlide = carouselList.find('li:last-of-type');
+        var firstSlide = carouselList.find('li').first(),
+            lastSlide = carouselList.find('li').last();
         
         firstSlide.before(lastSlide);
         changeMargin(); 
     }
     
-    function sliderPrev() {
+    function sliderPrev() { 
+        var dataNr = $('li').last().attr('data-nr');
+        
         carouselList.animate({
             'margin-left': '0'
         }, 1000, changeSlidePrev);
+        findSlideNumber(dataNr);
     }
     
     function sliderNext() {
+        var dataNr = $('li').first().next().attr('data-nr');
+        
         carouselList.animate({
             'margin-left': '-800px'
         }, 1000, changeSlideNext);
+        findSlideNumber(dataNr);
     }
-      
-    
+       
     //Main script  
     carouselList.css({
         'width': sliderWidth
     });
-      
-    function test() {  
-        carouselElement.each(function(index, element) {
-            $(element).attr('data-nr', index + 1);
-            return index + 1;
-        }); 
-    }
-       
+         
     $('.right-arrow').click(function() {
         sliderNext();
     });
@@ -71,4 +80,5 @@ $(document).ready(function () {
         function() {
             startInterval = setInterval(sliderNext, 3000);
         });
+    addSlideNumber();
 });
