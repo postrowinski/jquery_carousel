@@ -71,6 +71,28 @@ $vertical-phone: "(max-width: 475px)";
             right: 10px;
         }
     }
+    .bullets {
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        @include transform(translateX(-50%));
+        span {
+            display: inline-block;
+            margin-right: 4px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            &:hover {
+                cursor: pointer;
+            }
+            &.active {
+                background: #fff;
+                @include transform(scale(1.4));
+            }
+        }
+    }
 }
 
 #info {

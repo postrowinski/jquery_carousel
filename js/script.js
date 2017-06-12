@@ -3,7 +3,7 @@ $(document).ready(function () {
     
     // Variables   
     var carouselList = $('#carousel').find('ul'),
-        carouselElement = $('#carousel').find('li'),
+        carouselElement = carouselList.find('li'),
         imageLength = carouselElement.length,
         sliderWidth = (400 * imageLength) + 'px',
         startInterval = setInterval(sliderNext, 3000);
@@ -16,69 +16,76 @@ $(document).ready(function () {
     }
     
     function addSlideNumber() {  
-        carouselElement.each(function(index, element) {
+        carouselElement.each(function (index, element) {
             $(element).attr('data-nr', index + 1);
         }); 
     }
     
     function findSlideNumber(dataNr) {      
         $('#info').find('p').remove();
-        $('#info').append('<p>' + dataNr + ' / ' + imageLength + '</p>');      
+        $('#info').append('<p>').text(dataNr + ' / ' + imageLength); 
     }
-    
+       
     function changeSlideNext() {
         var firstSlide = carouselList.find('li').first(),
-            lastSlide = carouselList.find('li').last();
+            lastSlide = carouselList.find('li').last(),
+            dataNr = firstSlide.next().attr('data-nr');
+        
+        carouselElement.removeClass('active');
+        firstSlide.next().addClass('active');
         
         lastSlide.after(firstSlide);
-        changeMargin();        
+        changeMargin();
+        findSlideNumber(dataNr);
     }  
     
     function changeSlidePrev() {
         var firstSlide = carouselList.find('li').first(),
-            lastSlide = carouselList.find('li').last();
+            lastSlide = carouselList.find('li').last(),
+            dataNr = lastSlide.attr('data-nr');
+        
+        carouselElement.removeClass('active');
+        lastSlide.addClass('active');
         
         firstSlide.before(lastSlide);
         changeMargin(); 
+        findSlideNumber(dataNr);
     }
     
     function sliderPrev() { 
-        var dataNr = $('li').last().attr('data-nr');
-        
         carouselList.animate({
             'margin-left': '0'
-        }, 1000, changeSlidePrev);
-        findSlideNumber(dataNr);
+        }, 1000, changeSlidePrev);      
     }
     
     function sliderNext() {
-        var dataNr = $('li').first().next().attr('data-nr');
-        
         carouselList.animate({
             'margin-left': '-800px'
         }, 1000, changeSlideNext);
-        findSlideNumber(dataNr);
     }
        
-    //Main script  
+    //Main script
+    addSlideNumber();
     carouselList.css({
         'width': sliderWidth
     });
-         
-    $('.right-arrow').click(function() {
-        sliderNext();
-    });
     
-    $('.left-arrow').click(function() {
-        sliderPrev();
-    });
+    for (var i = 0; i < imageLength; i++) {
+        $('.bullets').append('<span></span')
+    }
     
+    if (carouselElement.hasClass('active')) {
+        $('.bullets').find('span').first().addClass('active');
+    }
+    
+    $('.right-arrow').click(sliderNext);
+    $('.left-arrow').click(sliderPrev);
     $('#carousel').hover(
         function () {
             clearInterval(startInterval);
         }, 
-        function() {
+        function () {
             startInterval = setInterval(sliderNext, 3000);
-        });
-    addSlideNumber();
+        }
+    );
 });

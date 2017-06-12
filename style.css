@@ -39,6 +39,28 @@
     cursor: pointer; }
     #carousel .right-arrow .fa {
       right: 10px; }
+  #carousel .bullets {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    #carousel .bullets span {
+      display: inline-block;
+      margin-right: 4px;
+      width: 10px;
+      height: 10px;
+      border: 1px solid #fff;
+      border-radius: 50%; }
+      #carousel .bullets span:hover {
+        cursor: pointer; }
+      #carousel .bullets span.active {
+        background: #fff;
+        -webkit-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+        transform: scale(1.4); }
 
 #info {
   max-width: 400px;
